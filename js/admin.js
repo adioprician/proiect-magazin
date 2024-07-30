@@ -22,7 +22,8 @@ function displayAllProducts() {
             <tr>
                 <td>${product.name}</td>
                 <td>${product.price}</td>
-                <td> <img src="${product.imageUrl}" alt="${product.name}" width="50px" />
+                <td>
+                 <img src="${product.imageUrl}" alt="${product.name}" width="50px" />
                 </td>   
                 <td>${product.category}</td>
                 <td>

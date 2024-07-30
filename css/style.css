@@ -8,6 +8,7 @@
     --primary-color: #9BCF53;
     --dark-color: black;
     --secondary-color: #416D19;
+    --third-color:yellow;
 
 }
 body{
@@ -35,11 +36,10 @@ body{
 }
 .navbar a,
 .navbar h3 {
-    color: var(--dark-color);
+    color: var(--third-color);
     text-decoration: none;
     margin: 0 10px; 
-    font-size: 20px;
-    
+    font-size: 20px;    
 }
 .bg-dark{
     background-color: var(--secondary-color);
@@ -68,26 +68,24 @@ body{
 .justify-around{
     justify-content: space-around;
 }
-/* .justify-between{
+.justify-between{
     justify-content: space-between;
-} */
+}
 .items-center{
     align-items: center;
 }
 
 .product-card{
     background-color: var(--primary-color);
-    color: white;
+    color:var(--third-color);
     border: 2px solid var(--secondary-color);
     border-radius: 10px;
     padding: 20px 10px;
-    margin: 10px;
     box-shadow: 0 5px 10px rgba(1,1,1,1);
-    transition: transform 0.3s ease;
     cursor: pointer;
     overflow: hidden;
     position: relative;
-    height: 200px;
+    height: 250px;
     width: 200px;
     text-decoration: none;
     display: flex;
