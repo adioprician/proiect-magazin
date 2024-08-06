@@ -2,56 +2,43 @@ import { getProductById } from '../API/products.js';
 
 
 
-document.addEventListener('DOMContentLoaded',  async () => {
+document.addEventListener('DOMContentLoaded', () => {
 	const cart = JSON.parse(localStorage.getItem('cart'));
 	const cartItemsContainer = document.querySelector('.cart-items');
 	const cartTotalContainer = document.querySelector('.cart-total');
 
-	console.log(cart);
-
-	async function updateCart() {
+	function updateCart() {
 		cartItemsContainer.innerHTML = '';
 		let total = 0;
 
 		for (let id in cart) {
-			const product =  await getProductById(id);
-			product.quantity = cart[id].quantity;
+			const product =  cart[id];			
 
 			const productCard = document.createElement('div');
 			productCard.className =
-				'flex justify-between items-center w-200';
-			productCard.innerHTML = `
-				<span>${product.name}</span>
-				<div> 
-					<button class="decrease">-</button>
-					<span>${product.quantity}</span>
-					<button class="increase" data-id=${id}>+</button>
-				</div>
-			`;
-			cartItemsContainer.appendChild(productCard);
-
-
+				'flex justify-between items-center border-bottom';
+				//aici cu w-300 nu se aseaza frumos in pagina. w-300 aveam sus de la curs
 			const descreaseDisabled = product.quantity === 1 ? 'disabled' : '';
 			productCard.innerHTML = `
-			<img width="20px" src=${product.imageUrl} />
-				<div class="w-150 h-40 flex gap-20 justify-between items-center">
-            	<span>${product.name}</span>
-            	<div>
+			<img width="60px" src=${product.imageUrl} />
+				<div class="w-150 h-60 flex  gap-20 justify-between items-center">
+            		<span>${product.name}</span>
+            		<div class="flex">
 						<button data-id=${id} ${descreaseDisabled} class="decrease">-</button>
 						<span>${product.quantity}</span>
 						<button data-id=${id} class="increase">+</button>
-            	</div>
+            		</div>
 				</div>
 				<span>${product.price * product.quantity} Euro </span>
 				<button data-id=${id} class="delete">Sterge</button>
+				<!-- aici poate pun un cos de gunoi -->
          `;
 			total = total + product.price * product.quantity;
 			cartItemsContainer.appendChild(productCard);
 		}
-		cartTotalContainer.innerHTML =
-			total === 0 ? 'Cosul de cumparaturi este gol' : `Total: ${total}`;
+		cartTotalContainer.innerHTML = total === 0 ? 'Cosul de cumparaturi este gol.' : `Total: ${total}`;
 	}
-
+	
 	cartItemsContainer.addEventListener('click', (e) => {
 		if (e.target.classList.contains('increase')) {
 			const id = e.target.getAttribute('data-id');
@@ -67,5 +54,5 @@ document.addEventListener('DOMContentLoaded',  async () => {
 		updateCart();
 	});
 
-	await updateCart();
+	updateCart();
 });

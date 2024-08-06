@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', showProductDetails);
 
-const url = "https://668d7a50099db4c579f31778.mockapi.io/products";
+ const url = "https://668d7a50099db4c579f31778.mockapi.io/products";
 
 async function showProductDetails() {
     const urlSearchParam = new URLSearchParams(window.location.search);

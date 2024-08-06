@@ -95,7 +95,19 @@ body{
 
 
 }
-/* 
-.w-200{
-    width: 200px;
-} */
+
+.w-300{
+    width: 300px;
+}
+
+.w-150{
+    width: 150px;
+}
+
+.h-60{
+    height: 60px;
+}
+
+.border-bottom{
+    border-bottom: 2px solid var(--secondary-color);
+}

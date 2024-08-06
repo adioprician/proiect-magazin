@@ -3,15 +3,13 @@ import { mapProductToCard } from './utils/layout.js';
 
 document.addEventListener('DOMContentLoaded', displayAllProducts);
 const mainContainer = document.querySelector('.main');
-const colorFilterContainer = document.querySelector('.colors');
+
 
 async function displayAllProducts() {
 	const products = await getAllProducts();
 	mainContainer.innerHTML = products.map(mapProductToCard).join(' ');
 
 	const addToCartButtons = document.querySelectorAll('.add-to-cart');
-
-    console.log(addToCartButtons);
 
 	addToCartButtons.forEach((button) => {
 		button.addEventListener('click', () => {
@@ -38,5 +36,5 @@ async function displayAllProducts() {
 		});
 	});
 
-	
+    
 }
