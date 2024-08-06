@@ -1,24 +1,39 @@
-import { getProductById } from "../API/products";
-// import { getProductById } from '../api/products.js';
+import { getProductById } from '../API/products.js';
 
-document.addEventListener('DOMContentLoaded', () => {
+
+
+document.addEventListener('DOMContentLoaded',  async () => {
 	const cart = JSON.parse(localStorage.getItem('cart'));
 	const cartItemsContainer = document.querySelector('.cart-items');
 	const cartTotalContainer = document.querySelector('.cart-total');
 
-	function updateCart() {
+	console.log(cart);
+
+	async function updateCart() {
 		cartItemsContainer.innerHTML = '';
 		let total = 0;
 
 		for (let id in cart) {
-			const product = cart[id];
+			const product =  await getProductById(id);
+			product.quantity = cart[id].quantity;
 
 			const productCard = document.createElement('div');
 			productCard.className =
-				'flex justify-between items-center w-300 border-bottom';
+				'flex justify-between items-center w-200';
+			productCard.innerHTML = `
+				<span>${product.name}</span>
+				<div> 
+					<button class="decrease">-</button>
+					<span>${product.quantity}</span>
+					<button class="increase" data-id=${id}>+</button>
+				</div>
+			`;
+			cartItemsContainer.appendChild(productCard);
+
+
 			const descreaseDisabled = product.quantity === 1 ? 'disabled' : '';
 			productCard.innerHTML = `
-			<img width="20px" src=../${product.imageUrl} />
+			<img width="20px" src=${product.imageUrl} />
 				<div class="w-150 h-40 flex gap-20 justify-between items-center">
             	<span>${product.name}</span>
             	<div>
@@ -27,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
 						<button data-id=${id} class="increase">+</button>
             	</div>
 				</div>
-				<span>${product.price * product.quantity} lei</span>
+				<span>${product.price * product.quantity} Euro </span>
 				<button data-id=${id} class="delete">Sterge</button>
          `;
 			total = total + product.price * product.quantity;
@@ -52,5 +67,5 @@ document.addEventListener('DOMContentLoaded', () => {
 		updateCart();
 	});
 
-	updateCart();
+	await updateCart();
 });

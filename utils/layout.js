@@ -5,8 +5,8 @@ export function mapProductToCard(product) {
                <a href="../pages/details.html?id=${product.id}">
                   <img src=${product.imageUrl} width="150px"/>
                </a>
-					<p class="card-price">${product.price} lei</p>
-               <button class="add-to-cart" data-id=${product.id} data-name=${product.name} data-price=${product.price} data-image=${product.imageUrl}>Adauga in cos</button>
+					<p class="card-price">${product.price} Euro</p>
+               <button class="add-to-cart" data-id=${product.id} data-name=${product.name} data-price=${product.price} data-image=${product.imageUrl} data-detailes=${product.category}>Adauga in cos</button>
 				</div>
       		`;
 }
