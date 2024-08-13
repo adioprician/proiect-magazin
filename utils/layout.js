@@ -6,7 +6,7 @@ export function mapProductToCard(product) {
                   <img src=${product.imageUrl} width="150px"/>
                </a>
 					<p class="card-price">${product.price} Euro</p>
-               <button class="add-to-cart" data-id=${product.id} data-name=${product.name} data-price=${product.price} data-image=${product.imageUrl} data-category=${product.category}>Adauga in cos</button>
+               <button class="add-to-cart" data-stock='${product.stock}' data-id='${product.id}' data-name='${product.name}' data-price='${product.price}' data-image='${product.imageUrl}' data-category='${product.category}' data-clicks="0"><i class="fa-solid fa-cart-shopping"></i></button>
 				</div>
       		`;
 }
@@ -33,7 +33,6 @@ export function mapProductToAdminTableRow(product) {
                      <i class="fa-solid fa-trash"></i>
                   </button>
                </td>
-               
             </tr>
             `;
 }

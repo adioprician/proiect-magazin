@@ -16,26 +16,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			const productCard = document.createElement('div');
 			productCard.className =
-				'flex justify-between items-center border-bottom';
+				'flex justify-between items-center border-bottom ';
 				//aici cu w-300 nu se aseaza frumos in pagina. w-300 aveam sus de la curs
 			const descreaseDisabled = product.quantity === 1 ? 'disabled' : '';
+			const increaseDisabled = product.quantity === 3 ? 'disabled' : '';
 			productCard.innerHTML = `
 			<img width="60px" src=${product.imageUrl} />
-				<div class="w-150 h-60 flex  gap-20 justify-between items-center">
+				<div class="w-150  flex  gap-20 justify-between items-center">
             		<span>${product.name}</span>
             		<div class="flex">
 						<button data-id=${id} ${descreaseDisabled} class="decrease">-</button>
 						<span>${product.quantity}</span>
-						<button data-id=${id} class="increase">+</button>
+						<button data-id=${id} ${increaseDisabled} class="increase">+</button>
             		</div>
 				</div>
 				<span>${product.price * product.quantity} Euro </span>
 				<button data-id=${id} class="delete">Sterge</button>
-				<!-- aici poate pun un cos de gunoi -->
          `;
-			total = total + product.price * product.quantity;
-			cartItemsContainer.appendChild(productCard);
-		}
+		 total = total + product.price * product.quantity;
+		 cartItemsContainer.appendChild(productCard);
+	 }
+		 
 		cartTotalContainer.innerHTML = total === 0 ? 'Cosul de cumparaturi este gol.' : `Total: ${total}`;
 	}
 	
@@ -43,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		if (e.target.classList.contains('increase')) {
 			const id = e.target.getAttribute('data-id');
 			cart[id].quantity += 1;
+			console.log(cart[id]);
 		} else if (e.target.classList.contains('decrease')) {
 			const id = e.target.getAttribute('data-id');
 			cart[id].quantity -= 1;
