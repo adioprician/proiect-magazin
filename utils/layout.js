@@ -22,6 +22,7 @@ export function mapProductToAdminTableRow(product) {
                   </a>
                </td>
                <td>${product.category}</td>
+               <td>${product.stock}</td>
                <td>
                   <button class="edit-${product.id}">
                      <i class="fa-solid fa-pen-to-square">
@@ -36,3 +37,6 @@ export function mapProductToAdminTableRow(product) {
             </tr>
             `;
 }
+
+
+

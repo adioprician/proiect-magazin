@@ -4,7 +4,6 @@ import { mapProductToCard } from './utils/layout.js';
 document.addEventListener('DOMContentLoaded', displayAllProducts);
 const mainContainer = document.querySelector('.main');
 
-
 async function displayAllProducts() {
 	const products = await getAllProducts();
 	mainContainer.innerHTML = products.map(mapProductToCard).join(' ');
@@ -19,22 +18,23 @@ async function displayAllProducts() {
 			const name = button.getAttribute('data-name');
 			const imageUrl = button.getAttribute('data-image');
 			const category = button.getAttribute('data-category');
-			const stock = button.getAttribute('data-stock');
-
-
-            let clicks = parseInt(button.getAttribute('data-clicks'), 3);
-
-            clicks += 1;
-            button.setAttribute('data-clicks', clicks);
-
-            if (clicks == 3) {
-                button.disabled = true;
-                button.innerHTML = '<i class="fa-solid fa-cart-shopping"></i> Added 3 Times';
-                button.classList.add('disabled-button');
-            }
+			const stock = parseInt(button.getAttribute('data-stock'), 10);
 
 			let cart = JSON.parse(localStorage.getItem('cart')) || {};
-			
+
+			let currentQuantity = cart[productId] ? cart[productId].quantity : 0;
+
+			let clicks = parseInt(button.getAttribute('data-clicks'), 10) || 0;
+			clicks += 1;
+
+			if (currentQuantity + 1 > stock) {
+				alert(`Nu poți adăuga mai mult de ${stock} produse în coș.`);
+				button.disabled = true;
+				button.innerHTML = '<i class="fa-solid fa-cart-shopping"></i> Stoc epuizat';
+				button.classList.add('disabled-button');
+				return;
+			}
+
 			if (cart[productId]) {
 				cart[productId].quantity += 1;
 			} else {
@@ -43,14 +43,19 @@ async function displayAllProducts() {
 					price: price,
 					name: name,
 					imageUrl: imageUrl,
-                    category: category,
+					category: category,
 					stock: stock,
 				};
 			}
-			// console.log(cart);
+
 			localStorage.setItem('cart', JSON.stringify(cart));
+
+			button.setAttribute('data-clicks', clicks);
+			if (cart[productId].quantity >= stock) {
+				button.disabled = true;
+				button.innerHTML = '<i class="fa-solid fa-cart-shopping"></i> Stoc epuizat';
+				button.classList.add('disabled-button');
+			}
 		});
 	});
-
-    
 }

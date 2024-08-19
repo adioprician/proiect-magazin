@@ -13,14 +13,14 @@
     padding: 20px;
 }
 h1{
-    color: white;
+    color:var(--third-color);
     text-align: center;
 }
 #product-form {
     background-color: var(--secondary-color);
     padding: 20px;
     border-radius: 10px;
-    color: white;
+    color:var(--third-color);
     text-align: center;
     cursor: pointer;
 
@@ -51,7 +51,7 @@ form > div > input{
     font-size: 18px;
     border-radius: 10px;
     border: 1px solid gray;
-    /* background-color: rgb(100, 248, 14); */
+    background-color:var(--primary-color);
    
 }
 

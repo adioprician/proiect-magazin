@@ -28,6 +28,7 @@ const priceInput = document.getElementById('price');
 const imageUrlInput = document.getElementById('image-url');
 const detailsInput = document.getElementById('details');
 const categoryInput = document.getElementById('category');
+const stockInput = document.getElementById('stock');
 const saveProductButton = document.getElementById('save-btn');
 let editMode = false;
 let currentEditableProductId;
@@ -42,6 +43,7 @@ saveProductButton.addEventListener('click', saveProduct);
         imageUrl: imageUrlInput.value,
         details: detailsInput.value,
         category: categoryInput.value,
+        stock: Number(stockInput.value),
     };
 
      if(editMode){
@@ -85,6 +87,7 @@ function editProduct(id) {
         imageUrlInput.value = product.imageUrl;
         detailsInput.value = product.details;
         categoryInput.value = product.category;
+        stockInput.value = product.stock;
 
         currentEditableProductId = product.id;
     });

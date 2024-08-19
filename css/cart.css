@@ -1,4 +1,4 @@
-/* General Styles */
+
 :root {
     --primary-color: #9BCF53;
     --dark-color: black;
@@ -7,29 +7,41 @@
 
 }
 
+.container {
+    display: inline-block;
+    max-width: 800px;
+    padding: 20px;
+    background-color: var(--primary-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    margin: 20px auto;
+    text-align: center;
+    transition: background-color 0.3s ease;
+
+}
+
+
 body {
     font-family: Arial, sans-serif;
-    background-color:var(--primary-color);
+    background-color: var(--primary-color);
     color: #333;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* height: 100vh; */
+    
 }
 
-/* Container for Cart Items */
+
 .cart-items {
-    /* background-color:var(--secondary-color); */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    padding: 20px;
     max-width: 100%;
     width: 100%;
 }
 
-/* Cart Item Style */
+
 .cart-items .flex {
     display: flex;
     justify-content: space-between;
@@ -38,17 +50,14 @@ body {
     border-bottom: 1px solid var(--third-color);
 }
 
-/* Last item no border */
 .cart-items .flex:last-child {
     border-bottom: none;
 }
 
-/* Product Image */
 .cart-items img {
     border-radius: 4px;
 }
 
-/* Product Info */
 .cart-items .w-150 {
     flex-grow: 1;
     padding-left: 20px;
@@ -59,7 +68,6 @@ body {
     color: #555;
 }
 
-/* Quantity Buttons */
 .cart-items button {
     background-color: #007bff;
     color: white;
@@ -81,7 +89,6 @@ body {
     background-color: #0056b3;
 }
 
-/* Total Price */
 .cart-total {
     border-radius: 10px;
     font-size: 18px;
@@ -89,24 +96,18 @@ body {
     text-align: right;
     margin-top: 20px;
     padding: 10px 0;
-  
-   
-    
 }
 
-/* Delete Button */
 .cart-items .delete {
     background-color: transparent;
     border: none;
     cursor: pointer;
-    color:var(--third-color);
+    color: var(--third-color);
     font-size: 18px;
 }
 
-/* Cart Icon as Delete Button */
 .cart-items .delete::before {
     content: "\f1f8";
-    /* FontAwesome trash icon */
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
 }
