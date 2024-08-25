@@ -11,11 +11,8 @@
     --third-color:yellow;
 
 }
-.container{
-    
-}
+
 body{
-    /* padding: 100px; */
     background-color: var(--primary-color);
     font-family: "Roboto Mono", monospace;
     font-optical-sizing: auto;
@@ -26,7 +23,6 @@ p{
     flex-direction: column;
     position: relative;
     padding-bottom: 2vh;
-    /* padding-top: 5vh; */
 }
 .logo{
     font-family: 'Playwrite CU', cursive;
@@ -158,6 +154,4 @@ p{
     cursor: not-allowed;
     color: #777;
 }
-.main{
-    
-}
+
